@@ -4,7 +4,7 @@ on: workflow_dispatch
 env:
   ACR_LOGIN_SERVER: aistraining.azurecr.io
   TAG_NAME: eshoponweb-019:1.0.0
-  IMAGE_NAME: ${{ vars.ACR_LOGIN_SERVER }}/${{ vars.TAG_NAME }}
+  IMAGE_NAME: aistraining.azurecr.io/eshoponweb-019:1.0.0
   RESOURCE_GROUP: ais-training
   CLUSTER_NAME: aks-demo
 
