@@ -4,14 +4,14 @@ on: workflow_dispatch
 env:
   ACR_LOGIN_SERVER: aistraining.azurecr.io
   TAG_NAME: eshoponweb-019:1.0.0
-  IMAGE_NAME: ${{ vars.ACR_LOGIN_SERVER}}/${{ vars.TAG_NAME }}
+  IMAGE_NAME: ${{ vars.ACR_LOGIN_SERVER }}/${{ vars.TAG_NAME }}
 
 jobs:
   build-container:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source cod
+      - name: Checkout source code
         uses: actions/checkout@v7.0.0
 
       - name: ACR Login
@@ -23,6 +23,6 @@ jobs:
 
       - name: Build and Push Image
         run: |
-          docker build . -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }}
+          docker build -f src/Web/Dockerfile -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }} .
           docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }}
         
